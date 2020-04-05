@@ -18,6 +18,19 @@
   &__group-list{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
+    padding: 20px 20px 0;
+    & .list {
+      margin-bottom: 40px;
+      &__group-name {
+        color: #ffffff;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      &__group-message {
+        color: #ffffff;
+        font-size: 11px;
+      }
+    }
   }
 }
 
@@ -30,6 +43,8 @@
   &__name {
     line-height: 20px;
     color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
   }
   &__icons {
     display: flex;
@@ -39,6 +54,7 @@
     }
   }
 }
+
 
 .chat-main {
   width: calc(100vw - 300px);
