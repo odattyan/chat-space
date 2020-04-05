@@ -8,10 +8,35 @@
   &__user-name {
     height: 100px;
     background-color: #253141;
+    display: flex;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
   }
   &__group-list{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
+  }
+}
+
+.top-items {
+  height: 20px;
+  width: 260px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  &__name {
+    line-height: 20px;
+    color: #ffffff;
+  }
+  &__icons {
+    display: flex;
+    line-height: 20px;
+    &__edit-user {
+      margin-left: 5px;
+    }
   }
 }
 
