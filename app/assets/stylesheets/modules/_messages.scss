@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+$white-color: #ffffff;
+$btn-color: #38aef0;
+$input-width: 100%;
+
 .side-bar {
   width: 300px;
   float: left;
@@ -12,7 +16,7 @@
     align-items: center;
     a {
       text-decoration: none;
-      color: #ffffff;
+      color: $white-color;
     }
   }
 
@@ -23,12 +27,12 @@
     & .list {
       margin-bottom: 40px;
       &__group-name {
-        color: #ffffff;
+        color: $white-color;
         font-size: 15px;
         margin-bottom: 5px;
       }
       &__group-message {
-        color: #ffffff;
+        color: $white-color;
         font-size: 11px;
       }
     }
@@ -43,7 +47,7 @@
   justify-content: space-between;
   &__name {
     line-height: 20px;
-    color: #ffffff;
+    color: $white-color;
     font-size: 16px;
     font-weight: bold;
   }
@@ -62,14 +66,13 @@
   float: left;
   &__group-info {
     height: 100px;
-    // background-color: #ffffff;
     border: 1px solid #eeeeee;
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
     a {
       text-decoration: none;
-      color: #38aef0;
+      color: $btn-color;
     }
     &__left-box {
       margin-top: 35px;
@@ -89,7 +92,7 @@
       line-height: 40px;
       padding: 0 20px;
       margin-top: 30px;
-      border: solid 1px #38aef0;
+      border: solid 1px $btn-color;
       position: absolute;
       right: 40px;
     }
@@ -131,10 +134,10 @@
       display: flex;
       .input-box {
         position: relative;
-        width: 100%;
+        width: $input-width;
         &__text {
           height: 50px;
-          width: 100%;
+          width: $input-width;
           border-style: none;
           padding: 0 40px 0 10px;
         }
@@ -153,11 +156,11 @@
           }
         }
       }
-      
+
       .submit-btn {
         cursor: pointer;
-        background-color: #38aef0;
-        color: white;
+        background-color: $btn-color;
+        color: $white-color;
         width: 100px;
         margin-left: 15px;
         height: 50px;
