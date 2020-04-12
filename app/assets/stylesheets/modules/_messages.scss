@@ -26,6 +26,9 @@ $input-width: 100%;
     padding: 20px 20px 0;
     & .list {
       margin-bottom: 40px;
+      & a {
+        text-decoration: none;
+      }
       &__group-name {
         color: $white-color;
         font-size: 15px;
