@@ -2,29 +2,19 @@
   .chat-main__group-info
     .chat-main__group-info__left-box
       %h2.chat-main__group-info__left-box__current-group 
-        go
+        
       %ul.chat-main__group-info__left-box__member-list 
-        Member:
-        %li.chat-main__group-info__left-box__member-list__member oda
+
+        %li.chat-main__group-info__left-box__member-list__member 
     = link_to "#" do
       .chat-main__group-info__edit-btn Edit
   .chat-main__message-list
-    .message
-      .message__upper-info
-        %p.message__upper-info__user oda
-        %p.message__upper-info__data 2020/04/07(tue) 10:59:00
-      %p.message__text よろしく
-    .message
-      .message__upper-info
-        %p.message__upper-info__user oda
-        %p.message__upper-info__data 2020/04/07(tue) 11:05:10
-      %p.message__text こんばんわ
+    = render @messages
   .chat-main__message-form
-    .form
-      = form_for [@group, @messge] do |f|
+    = form_for [@group, @message] do |f|
+      .input-box
         = f.text_field :body, class: 'input-box__text', placeholder: 'type a message'
-        .input-box
-          = f.label :image, class: 'input-box__image' do
+        = f.label :image, class: 'input-box__image' do
           = icon('fas', 'image', class: 'icon')
           = f.file_field :image, class: 'hidden'
-      =f.submit "Send", class: 'submit-btn'
+      = f.submit 'Send', class: 'submit-btn'
