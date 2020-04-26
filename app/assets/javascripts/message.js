@@ -3,11 +3,11 @@ $(function(){
     if (message.image) {
       var html = 
       `<div class="message">
-        <div class="upper-info">
-          <p class="upper-info__user">
+        <div class="message__upper-info">
+          <p class="message__upper-info__user">
             ${message.user_name}
           </p>
-          <p class="upper-info__data">
+          <p class="message__upper-info__data">
             ${message.created_at}
           </p>
         </div>
@@ -20,11 +20,11 @@ $(function(){
     } else {
       var html = 
       `<div class="message">
-        <div class="upper-info">
-          <p class="upper-info__user">
+        <div class="message__upper-info">
+          <p class="message__upper-info__user">
             ${message.user_name}
           </p>
-          <p class="upper-info__data">
+          <p class="message__upper-info__data">
             ${message.created_at}
           </p>
         </div>
@@ -49,6 +49,13 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      $('.chat-main__message-list').append(html);
+      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
+      $('#new_message')[0].reset();
+      $('#submit-btn').prop('disabled', false);
     })
+    .fail(function() {
+      alert("メッセージ送信に失敗しました");
+    });
   });
 });
