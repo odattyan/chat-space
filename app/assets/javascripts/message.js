@@ -1,8 +1,44 @@
 $(function(){
+  function buildHTML(message){
+    if (message.image) {
+      var html = 
+      `<div class="message">
+        <div class="upper-info">
+          <p class="upper-info__user">
+            ${message.user_name}
+          </p>
+          <p class="upper-info__data">
+            ${message.created_at}
+          </p>
+        </div>
+        <p class="message__text">
+          ${message.body}
+        </p>
+        <img src=${message.image} >
+      </div>`
+      return html;
+    } else {
+      var html = 
+      `<div class="message">
+        <div class="upper-info">
+          <p class="upper-info__user">
+            ${message.user_name}
+          </p>
+          <p class="upper-info__data">
+            ${message.created_at}
+          </p>
+        </div>
+        <p class="message__text">
+          ${message.body}
+        </p>
+      </div>`
+      return html;
+    };
+  }
   $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
-    var ulr = $(this).attr('action')
+    var url = $(this).attr('action')
     $.ajax ({
       url: url,
       type: 'POST',
@@ -10,6 +46,9 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
     })
   });
 });
