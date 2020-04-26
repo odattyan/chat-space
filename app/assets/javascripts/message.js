@@ -50,12 +50,14 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-main__message-list').append(html);
-      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
-      $('#new_message')[0].reset();
-      $('#submit-btn').prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+    })
+    .always(function(data){
+      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
+      $('#new_message')[0].reset();
+      $('#submit-btn').prop('disabled', false);
     });
   });
 });
