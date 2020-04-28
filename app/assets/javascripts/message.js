@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if (message.image) {
       var html = 
-      `<div class="message">
+      `<div class="message" data-message-id=${message.id}>
         <div class="message__upper-info">
           <p class="message__upper-info__user">
             ${message.user_name}
@@ -19,7 +19,7 @@ $(function(){
       return html;
     } else {
       var html = 
-      `<div class="message">
+      `<div class="message" data-message-id=${message.id}>
         <div class="message__upper-info">
           <p class="message__upper-info__user">
             ${message.user_name}
@@ -58,7 +58,8 @@ $(function(){
       $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
       $('#new_message')[0].reset();
       $('#submit-btn').prop('disabled', false);
-    });
+    })
+  })
     var reloadMessages = function() {
       var last_message_id = $('.message:last').data("message-id");
       $.ajax({
@@ -68,10 +69,15 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
-        console.log('success');
+        var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.messages').append(insertHTML);
       })
       .fail(function() {
         alert('error');
       });
-  });
+    };
+  setInterval(reloadMessages, 7000);
 });
